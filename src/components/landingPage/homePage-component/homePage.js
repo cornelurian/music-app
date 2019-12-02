@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import SummaryItem from "../summaryItem/summaryItem";
 import musicGenres from "../../../constants/genres";
 
 class HomePage extends Component {
@@ -18,19 +19,17 @@ class HomePage extends Component {
 
     return uniqueGenres.map(name => ({
       genre: name,
-      noOfSongs: allGenresListFromSongs.filter(item => item === name).length,
+      count: allGenresListFromSongs.filter(item => item === name).length,
       image: musicGenres.find(genre => genre.name === name)
     }));
   };
 
   render() {
     return (
-      <div className="homepage" style={{ border: "1px solid red" }}>
-        Test App home Page
+      <div className="homepage" style={{ border: "1px solid red", width: "600px" }}>
+        Songs Genres
         <p>---------------</p>
-        {this.cards.map(card => (
-          <p>{card.genre}</p>
-        ))}
+        {this.cards.map(item => <SummaryItem key={item.name} card={item}></SummaryItem>)}
       </div>
     );
   }
