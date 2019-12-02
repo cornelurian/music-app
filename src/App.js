@@ -4,7 +4,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import HomePage from "./components/landingPage/homePage-component/homePage";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -13,5 +13,3 @@ function App() {
     </div>
   );
 }
-
-export default connect()(App);

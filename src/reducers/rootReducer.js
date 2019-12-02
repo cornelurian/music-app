@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import landingPageReducer from './landingPageReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
+import songs from './landingPageReducer';
 
-export default combineReducers({
-  landingPageReducer
+const rootReducer = combineReducers({
+  ajaxCallsInProgress,
+  songs
 });
+
+export default rootReducer;
