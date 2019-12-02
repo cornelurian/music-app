@@ -7,7 +7,11 @@ export const loadSongsSuccess = songs => {
 
 export const loadSongs = () => dispatch => {
   dispatch(beginAjaxCall());
- 
+  // return songsApi.getAllSongs().then(songs => {
+  //   dispatch(loadSongsSuccess(songs));
+  // }).catch(error => {
+  //   throw(error);
+  // });
 
   dispatch(
     loadSongsSuccess([
@@ -20,6 +24,11 @@ export const loadSongs = () => dispatch => {
         artist: "A2",
         name: "Song 2",
         genre: ["rock"]
+      },
+      {
+        artist: "A3",
+        name: "Song 3",
+        genre: ["classic"]
       }
     ])
   );
