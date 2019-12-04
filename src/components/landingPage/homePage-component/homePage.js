@@ -26,10 +26,17 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="homepage" style={{ border: "1px solid red", width: "600px" }}>
+      <div
+        className="homepage"
+        style={{ border: "1px solid red", width: "600px" }}
+      >
         Songs Genres
         <p>---------------</p>
-        {this.cards.map(item => <SummaryItem key={item.name} card={item}></SummaryItem>)}
+        <div style={{ display: "subgrid", alignItems: "center"}}>
+          {this.cards.map(item => (
+            <SummaryItem key={item.name} card={item}></SummaryItem>
+          ))}
+        </div>
       </div>
     );
   }

@@ -22,10 +22,8 @@ export default function SummaryItem(props) {
   };
 
   const handleGenreSelection = genre => {
-    // return dispatch => {
       dispatch(selectGenre(genre));
       dispatch(updateFilteredSongs(getSongsByGenre(genre)));
-    // };
   };
 
   return (
