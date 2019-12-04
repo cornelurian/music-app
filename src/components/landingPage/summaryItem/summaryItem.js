@@ -22,38 +22,24 @@ export default function SummaryItem(props) {
   };
 
   const handleGenreSelection = genre => {
-      dispatch(selectGenre(genre));
-      dispatch(updateFilteredSongs(getSongsByGenre(genre)));
+    dispatch(selectGenre(genre));
+    dispatch(updateFilteredSongs(getSongsByGenre(genre)));
   };
 
   return (
     <div
-      style={{
-        float: "left",
-        width: "130px",
-        height: "130px",
-        margin: "4px",
-        backgroundImage: filePath
-      }}
+      className="summaryItem"
       onClick={() => {
         return handleGenreSelection(genre);
       }}
     >
-      <h3
-        style={{
-          margin: "0"
-        }}
-      >
-        {genre}
-      </h3>
-      <p
-        style={{
-          margin: "0",
-          padding: "0"
-        }}
-      >
-        {count}
-      </p>
+      <div class="photo" style={{ backgroundImage: filePath }}>
+      </div>
+      <div class="details">
+        <h3>
+          {genre} ({count})
+        </h3>
+      </div>
     </div>
   );
 }

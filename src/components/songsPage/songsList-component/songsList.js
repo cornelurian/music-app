@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateFilteredSongs } from "../../../actions/songsListActions";
 import Grid from "../grid/grid";
+import "./songsList.css";
 
 class SongsList extends Component {
   constructor(props) {
@@ -26,8 +27,8 @@ class SongsList extends Component {
     const list = this.props.songs.filter(
       song =>
         this.state.filterBy === "" ||
-        song.artist.toLowerCase().includes(this.state.filterBy) ||
-        song.name.toLowerCase().includes(this.state.filterBy)
+        song.artist.toLowerCase().includes(this.state.filterBy.toLowerCase()) ||
+        song.name.toLowerCase().includes(this.state.filterBy.toLowerCase())
     );
     //   .map((song, index) => (
     //     <li key={index}>
@@ -37,24 +38,23 @@ class SongsList extends Component {
 
     debugger;
     return (
-      <div style={{ border: "1px solid yellow", width: "600px" }}>
+      <div style={{ border: "1px solid gray", width: "600px" }}>
         {this.props.selectedGenre} songs:
-        <br></br>
+        <br />
         <input
           value={this.input}
           type="text"
           placeholder="search by Artist or Song"
           onChange={this.onChangeHandler.bind(this)}
         />
+        <br />
         {/* {JSON.stringify(this.props.songs, null, 2)} */}
-        <table class="tg" style={{width: "100%"}}>
-          <tr>
-            <th class="tg-0pky">Name</th>
-            <th class="tg-0lax">Artist</th>
-            <th class="tg-0lax">Duration</th>
-          </tr>
+        <div class="grid">
+          <span className="header">Name</span>
+          <span className="header">Artist</span>
+          <span className="header">Duration</span>
           <Grid songs={list}></Grid>
-        </table>
+        </div>
       </div>
     );
   }

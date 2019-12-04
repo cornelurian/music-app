@@ -1,4 +1,4 @@
-export default [
+export const genres = [
   { backgroundImage: "80.PNG", name: "80" },
   { backgroundImage: "90.PNG", name: "90" },
   { backgroundImage: "noImage.PNG", name: "Alternative" },
@@ -42,3 +42,5 @@ export default [
   { backgroundImage: "noImage.PNG", name: "Vocal" },
   { backgroundImage: "noImage.PNG", name: "World" }
 ];
+
+export default { genres };

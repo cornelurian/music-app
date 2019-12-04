@@ -2,13 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import SummaryItem from "../summaryItem/summaryItem";
-import musicGenres from "../../../constants/genres";
+import { genres } from "../../../constants/genres";
+import "./homePage.css";
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.cards = this.getUniqueCategories(props.songs);
   }
+
+  getBackgroundImage = selected => {
+    const info = genres.find(genre => genre.name.toLowerCase() === selected);
+    return info && info.backgroundImage;
+  };
 
   getUniqueCategories = songs => {
     const allGenresListFromSongs = [].concat(...songs.map(song => song.genre)); //concatenate all genres from all songs
@@ -17,22 +23,20 @@ class HomePage extends Component {
       ...new Set(allGenresListFromSongs.map(genre => genre.toLowerCase()))
     ]; //new set containing unique genres from songs
 
-    return uniqueGenres.map(name => ({
-      genre: name,
-      count: allGenresListFromSongs.filter(item => item === name).length,
-      image: musicGenres.find(genre => genre.name === name)
-    }));
+    return uniqueGenres.map(name => {
+      return {
+        genre: name,
+        count: allGenresListFromSongs.filter(item => item === name).length,
+        image: this.getBackgroundImage(name)
+      };
+    });
   };
 
   render() {
     return (
-      <div
-        className="homepage"
-        style={{ border: "1px solid red", width: "600px" }}
-      >
-        Songs Genres
-        <p>---------------</p>
-        <div style={{ display: "subgrid", alignItems: "center"}}>
+      <div className="homepage" style={{ border: "1px solid gray" }}>
+        Genres
+        <div className="cards">
           {this.cards.map(item => (
             <SummaryItem key={item.name} card={item}></SummaryItem>
           ))}
