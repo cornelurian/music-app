@@ -25,37 +25,37 @@ export const loadSongs = () => dispatch => {
     loadSongsSuccess([
       {
         artist: "A1",
-        name: "Song 1",
+        name: "Song 6",
         genre: ["rock", "pop"], 
         duration: 423
       },
       {
-        artist: "A2",
-        name: "Song 2",
+        artist: "D2",
+        name: "Song 4",
         genre: ["rock"], 
         duration: 142
       },
       {
-        artist: "A3",
+        artist: "F3",
         name: "Song 3",
         genre: ["classic"], 
         duration: 235
       },
       {
-        artist: "A3",
-        name: "Song 4",
+        artist: "B3",
+        name: "Song 7",
         genre: ["ragae"], 
         duration: 140
       },
       {
         artist: "A5",
-        name: "Song 5",
+        name: "Song 3",
         genre: ["jazz"], 
         duration: 124
       },
       {
-        artist: "A3",
-        name: "Song 6",
+        artist: "B3",
+        name: "Song 1",
         genre: ["blues","rock"], 
         duration: 150
       }

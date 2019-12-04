@@ -4,11 +4,11 @@ import {
   selectGenre,
   updateFilteredSongs
 } from "../../../actions/landingPageActions";
-import { IMAGES_PATH } from "../../../constants/relativePaths";
+import { CARDS_IMAGES_PATH } from "../../../constants/relativePaths";
 
 export default function SummaryItem(props) {
   const { genre, count, image = "noImage.PNG" } = props.card;
-  const filePath = `url(${IMAGES_PATH}${image})`;
+  const filePath = `url(${CARDS_IMAGES_PATH}${image})`;
 
   const allSongs = useSelector(state => state.songs);
   const selectedGenre = useSelector(state => state.selectedGenre);
@@ -33,7 +33,8 @@ export default function SummaryItem(props) {
         return handleGenreSelection(genre);
       }}
     >
-      <div class="photo" style={{ backgroundImage: filePath }}>
+     
+      <div class="photo" style={{ backgroundImage: filePath, backgroundSize: "cover" }}>
       </div>
       <div class="details">
         <h3>
