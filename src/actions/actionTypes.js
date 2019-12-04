@@ -4,3 +4,5 @@ export const AJAX_CALL_ERROR = 'AJAX_CALL_ERROR';
 
 //Landing page
 export const LOAD_SONGS_SUCCESS = 'LOAD_SONGS_SUCCESS';
+export const SELECT_GENRE = 'SELECT_GENRE';
+export const UPDATE_FILTERED_SONGS = 'UPDATE_FILTERED_SONGS';

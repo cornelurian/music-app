@@ -5,6 +5,14 @@ export const loadSongsSuccess = songs => {
   return { type: types.LOAD_SONGS_SUCCESS, songs };
 };
 
+export const selectGenre = genre => {
+  return { type: types.SELECT_GENRE, payload: genre };
+};
+
+export const updateFilteredSongs = songs => {
+  return { type: types.UPDATE_FILTERED_SONGS, songs };
+};
+
 export const loadSongs = () => dispatch => {
   dispatch(beginAjaxCall());
   // return songsApi.getAllSongs().then(songs => {

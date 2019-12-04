@@ -1,9 +1,11 @@
 export default {
   ajaxCallsInProgress: false,
+  selectedGenre: "",
   songs: [],
-  gridOptions: {
+  filters: {
+    filteredSongs: [],
     filteredBy: "",
-    sortBy: "",
-    sortDirection: ""
+    sortBy: "artist",
+    sortDirection: "asc"
   }
 };
