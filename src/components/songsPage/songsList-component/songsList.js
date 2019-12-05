@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { toggleSortList, changeSortBy } from "../../../actions/songsListActions";
+import {
+  toggleSortList,
+  changeSortBy
+} from "../../../actions/songsListActions";
 import Grid from "../grid/grid";
 import "./songsList.css";
 
-import { IMAGES_PATH, ICON_SORT_NAME, ICON_ADD_NAME } from "../../../constants/relativePaths";
+import {
+  IMAGES_PATH,
+  ICON_SORT_NAME,
+  ICON_ADD_NAME
+} from "../../../constants/relativePaths";
 
 class SongsList extends Component {
   constructor(props) {
@@ -28,6 +35,10 @@ class SongsList extends Component {
     );
   }
 
+  highlightSelectedHeader(currentBy) {
+    return this.props.filters.sortBy === currentBy ? 'selected' : '';
+  }
+
   render() {
     const list = this.props.songs.filter(
       song =>
@@ -40,7 +51,14 @@ class SongsList extends Component {
       <div style={{ border: "1px solid gray", width: "600px" }}>
         {this.props.selectedGenre} songs:
         <br />
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"space-evenly", width: "270px"}}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            width: "270px"
+          }}
+        >
           <input
             value={this.input}
             type="text"
@@ -48,27 +66,46 @@ class SongsList extends Component {
             onChange={this.onChangeHandler.bind(this)}
           />
 
-           <input
+          <input
             type="button"
             name="sort"
-            style={{ backgroundImage: `${this.sortIconPath}`, backgroundSize: "cover" }}
+            style={{
+              backgroundImage: `${this.sortIconPath}`,
+              backgroundSize: "cover"
+            }}
             onClick={this.props.toggleSortList}
           />
-           <input
+          <input
             type="button"
             name="add"
-            style={{ backgroundImage: `${this.sortAddPath}`, backgroundSize: "cover" }}
+            style={{
+              backgroundImage: `${this.sortAddPath}`,
+              backgroundSize: "cover"
+            }}
           />
         </div>
         <br />
-        
         <div class="grid">
-          <span className="header" onClick={(event) => changeSortBy("name")}>Name</span>
-          <span className="header" onClick={(event) => changeSortBy("artist")}>Artist</span>
+          <span
+          className={`header ${this.highlightSelectedHeader("name")}`}
+            onClick={event => {
+              this.props.changeSortBy("name");
+            }}
+          >
+            Name
+          </span>
+          <span
+            className={`header  ${this.highlightSelectedHeader("artist")}`}
+            onClick={event => {
+              this.props.changeSortBy("artist");
+            }}
+          >
+            Artist
+          </span>
           <span className="header">Duration</span>
           <Grid songs={list}></Grid>
         </div>
-        <br/>
+        <br />
         {/* <p>Filters: {JSON.stringify(this.props.filters, null, 2)}</p> */}
         <p>SortBy: {this.props.filters.sortBy}</p>
         <p>SortDirection: {this.props.filters.sortDirection}</p>
@@ -86,9 +123,11 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  toggleSortList: () =>  dispatch(toggleSortList()),
-  changeSortBy: (value) => dispatch(changeSortBy(value))
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleSortList: () => dispatch(toggleSortList()),
+    changeSortBy: value => dispatch(changeSortBy(value))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongsList);

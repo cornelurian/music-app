@@ -14,3 +14,7 @@
 .grid > span.header {
     font-size: 35px;
 }
+
+.selected {
+    color: gray;
+}

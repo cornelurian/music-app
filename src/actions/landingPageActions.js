@@ -50,7 +50,7 @@ export const loadSongs = () => dispatch => {
       {
         artist: "A5",
         name: "Song 3",
-        genre: ["jazz"], 
+        genre: ["jazz", "blues"], 
         duration: 124
       },
       {
