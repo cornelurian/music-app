@@ -27,7 +27,7 @@ export const filtersReducer = (state = initialState.filters, action) => {
         )
       });
     case types.TOGGLE_SORT_ORDER:
-      const newValue = state.sortDirection == "asc" ? "desc" : "asc";
+      const newValue = state.sortDirection === "asc" ? "desc" : "asc";
       return Object.assign({}, state, {
         sortDirection: newValue,
         filteredSongs: getSortedList(

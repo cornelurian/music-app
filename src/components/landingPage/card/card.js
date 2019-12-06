@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import {
-//   selectGenre,
-//   updateFilteredSongs
-// } from "../../../actions/landingPageActions";
 import { CARDS_IMAGES_PATH } from "../../../constants/relativePaths";
 
-export default function SummaryItem(props) {
+export default function Card(props) {
   const { genre, count, image = "noImage.PNG" } = props.card;
   const filePath = `url(${CARDS_IMAGES_PATH}${image})`;
 

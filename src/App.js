@@ -4,8 +4,9 @@ import "./App.css";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import HomePage from "./components/landingPage/homePage-component/homePage";
-import SongsList from "./components/songsPage/songsList-component/songsList";
+
+import GenreList from "./components/landingPage/genreList/genreList";
+import SongsList from "./components/songsPage/songsList/songsList";
 
 
 export class App extends React.Component {
@@ -13,11 +14,9 @@ export class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <HomePage />
-          {this.props.isGenreSelected && <SongsList />} */}
           <Router>
             <div>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={GenreList} />
               <Route path="/:genre" component={SongsList} />
             </div>
           </Router>
@@ -30,7 +29,7 @@ export class App extends React.Component {
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.ajaxCallsInProgress > 0,
-    isGenreSelected: state.selectedGenre != ""
+    isGenreSelected: state.selectedGenre !== ""
   };
 }
 

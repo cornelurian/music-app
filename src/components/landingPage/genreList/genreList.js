@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import SummaryItem from "../summaryItem/summaryItem";
+import Card from "../card/card";
 import { genres } from "../../../constants/genres";
-import "./homePage.css";
+import "./genreList.css";
 
-class HomePage extends Component {
+class GenreList extends Component {
   constructor(props) {
     super(props);
     this.cards = this.getUniqueCategories(props.songs);
@@ -38,7 +38,7 @@ class HomePage extends Component {
         Genres
         <div className="cards">
           {this.cards.map(item => (
-              <SummaryItem key={item.name} card={item}></SummaryItem>
+              <Card key={item.name} card={item}></Card>
           ))}
         </div>
       </div>
@@ -55,4 +55,4 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(GenreList);

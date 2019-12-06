@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import {
   toggleSortList,
@@ -70,16 +71,17 @@ class SongsList extends Component {
 
     return (
       <div style={{ border: "1px solid gray", width: "600px" }}>
-        {this.props.selectedGenre} songs:
+        <h2>{this.props.selectedGenre} songs</h2>
         <br />
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-evenly",
-            width: "270px"
+            width: "320px"
           }}
         >
+          <Link to={`/`}>Back</Link>
           <input
             value={this.input}
             type="text"
