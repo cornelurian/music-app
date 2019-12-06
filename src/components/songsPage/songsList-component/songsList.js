@@ -12,10 +12,19 @@ import {
   ICON_SORT_NAME,
   ICON_ADD_NAME
 } from "../../../constants/relativePaths";
+import {
+  selectGenre,
+  updateFilteredSongs
+} from "../../../actions/landingPageActions";
 
 class SongsList extends Component {
   constructor(props) {
     super(props);
+    const {
+      match: { params }
+    } = this.props;
+
+    this.genreUrlParam = params.genre;
     this.state = {
       filterBy: this.props.filterBy || ""
     };
@@ -36,7 +45,19 @@ class SongsList extends Component {
   }
 
   highlightSelectedHeader(currentBy) {
-    return this.props.filters.sortBy === currentBy ? 'selected' : '';
+    return this.props.filters.sortBy === currentBy ? "selected" : "";
+  }
+
+  getSongsByGenre(genre) {
+    if (this.props.allSongs && genre) {
+      return this.props.allSongs.filter(song => song.genre.includes(genre));
+    }
+    return [];
+  }
+
+  componentDidMount() {
+    const filteredSongs = this.getSongsByGenre(this.genreUrlParam);
+    this.props.selectGenre(this.genreUrlParam, filteredSongs);
   }
 
   render() {
@@ -87,7 +108,7 @@ class SongsList extends Component {
         <br />
         <div className="grid">
           <span
-          className={`header ${this.highlightSelectedHeader("name")}`}
+            className={`header ${this.highlightSelectedHeader("name")}`}
             onClick={event => {
               this.props.changeSortBy("name");
             }}
@@ -116,6 +137,7 @@ class SongsList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    allSongs: state.songs,
     selectedGenre: state.selectedGenre,
     songs: state.filters.filteredSongs,
     filterBy: state.filters.filterBy,
@@ -126,7 +148,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleSortList: () => dispatch(toggleSortList()),
-    changeSortBy: value => dispatch(changeSortBy(value))
+    changeSortBy: value => dispatch(changeSortBy(value)),
+    selectGenre: (genre, list) => {
+      return dispatch(selectGenre(genre)), dispatch(updateFilteredSongs(list));
+    }
   };
 };
 

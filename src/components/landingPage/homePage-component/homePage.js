@@ -38,7 +38,6 @@ class HomePage extends Component {
         Genres
         <div className="cards">
           {this.cards.map(item => (
-            // onClick={() => {let history = useHistory();  history.push(`/${item.name}`);}}
               <SummaryItem key={item.name} card={item}></SummaryItem>
           ))}
         </div>
@@ -54,7 +53,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  //simpleAction: () => dispatch(simpleAction())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

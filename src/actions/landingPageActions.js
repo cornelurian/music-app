@@ -24,7 +24,7 @@ export const loadSongs = () => dispatch => {
   dispatch(
     loadSongsSuccess([
       {
-        artist: "A1",
+        artist: "A2",
         name: "Song 6",
         genre: ["rock", "pop"], 
         duration: 423
