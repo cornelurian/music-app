@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   selectGenre,
   updateFilteredSongs
@@ -21,7 +22,7 @@ export default function SummaryItem(props) {
     return [];
   };
 
-  const handleGenreSelection = genre => {
+  const HandleGenreSelection = genre => {
     dispatch(selectGenre(genre));
     dispatch(updateFilteredSongs(getSongsByGenre(genre)));
   };
@@ -30,16 +31,17 @@ export default function SummaryItem(props) {
     <div
       className="summaryItem"
       onClick={() => {
-        return handleGenreSelection(genre);
+        return HandleGenreSelection(genre);
       }}
     >
-     
-      <div class="photo" style={{ backgroundImage: filePath, backgroundSize: "cover" }}>
-      </div>
-      <div class="details">
-        <h3>
+      <div
+        className="photo"
+        style={{ backgroundImage: filePath, backgroundSize: "cover" }}
+      ></div>
+      <div className="details">
+        <Link to={`/${genre}`}>
           {genre} ({count})
-        </h3>
+        </Link>
       </div>
     </div>
   );

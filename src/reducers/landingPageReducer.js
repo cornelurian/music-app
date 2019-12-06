@@ -5,7 +5,6 @@ const landingPageReducer = (state = initialState.songs, action) => {
   switch (action.type) {
     case types.LOAD_SONGS_SUCCESS:
       return action.songs;
-    case types.SELECT_GENRE:
     default:
       return state;
   }

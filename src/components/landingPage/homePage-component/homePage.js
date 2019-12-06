@@ -38,7 +38,8 @@ class HomePage extends Component {
         Genres
         <div className="cards">
           {this.cards.map(item => (
-            <SummaryItem key={item.name} card={item}></SummaryItem>
+            // onClick={() => {let history = useHistory();  history.push(`/${item.name}`);}}
+              <SummaryItem key={item.name} card={item}></SummaryItem>
           ))}
         </div>
       </div>

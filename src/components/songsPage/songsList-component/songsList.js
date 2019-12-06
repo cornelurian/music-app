@@ -85,7 +85,7 @@ class SongsList extends Component {
           />
         </div>
         <br />
-        <div class="grid">
+        <div className="grid">
           <span
           className={`header ${this.highlightSelectedHeader("name")}`}
             onClick={event => {
