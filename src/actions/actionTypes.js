@@ -10,3 +10,4 @@ export const UPDATE_FILTERED_SONGS = 'UPDATE_FILTERED_SONGS';
 //Songs list page
 export const TOGGLE_SORT_ORDER = "TOGGLE_SORT_ORDER";
 export const CHANGE_SORT_BY = "CHANGE_SORT_BY"; 
+export const ADD_NEW_SONG = "ADD_NEW_SONG"; 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   toggleSortList,
@@ -98,14 +98,16 @@ class SongsList extends Component {
             }}
             onClick={this.props.toggleSortList}
           />
-          <input
-            type="button"
-            name="add"
-            style={{
-              backgroundImage: `${this.sortAddPath}`,
-              backgroundSize: "cover"
-            }}
-          />
+          <Link to={`/new`}>
+            <input
+              type="button"
+              name="add"
+              style={{
+                backgroundImage: `${this.sortAddPath}`,
+                backgroundSize: "cover"
+              }}
+            />
+          </Link>
         </div>
         <br />
         <div className="grid">

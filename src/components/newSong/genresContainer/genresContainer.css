@@ -1,0 +1,8 @@
+.genres {
+  overflow: hidden; /* simple clearfix */
+}
+.genres .item {
+  float: left;
+  width: 25%;
+  box-sizing: border-box;
+}

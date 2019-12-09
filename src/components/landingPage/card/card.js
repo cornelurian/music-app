@@ -7,7 +7,7 @@ export default function Card(props) {
   const filePath = `url(${CARDS_IMAGES_PATH}${image})`;
 
   return (
-    <Link to={`/${genre}`}>
+    <Link to={`/songs/${genre}`}>
       <div className="summaryItem">
         <div
           className="photo"
