@@ -2,7 +2,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+You must run:
+
+### `node server.js`
+
+Open [http://localhost:8080](http://localhost:8080)
+in a separate bash window to start the backend that will provide you with the list of songs, 
+
+and, in the project directory, you can run:
 
 ### `npm start`
 

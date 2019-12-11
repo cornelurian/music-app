@@ -1,8 +1,9 @@
 export default {
-  ajaxCallsInProgress: false,
-  selectedGenre: "",
-  songs: [],
-  filters: {
+  ajaxCallsInProgress: false, //ajaxStatusReducer
+  selectedGenre: "",          //selectedGenreReducer
+  songs: [],                  //songsReducer
+  cards: [],                  //cardsReducer
+  filters: {                  //filtersReducer
     filteredSongs: [],
     filteredBy: "",
     sortBy: "artist",

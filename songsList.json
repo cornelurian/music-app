@@ -1,0 +1,38 @@
+[
+    {
+      "artist": "A2",
+      "name": "Song 6",
+      "genre": ["rock", "pop"], 
+      "duration": 423
+    },
+    {
+      "artist": "D2",
+      "name": "Song 4",
+      "genre": ["rock"], 
+      "duration": 142
+    },
+    {
+      "artist": "F3",
+      "name": "Song 3",
+      "genre": ["classic"], 
+      "duration": 235
+    },
+    {
+      "artist": "B3",
+      "name": "Song 7",
+      "genre": ["ragae"], 
+      "duration": 140
+    },
+    {
+      "artist": "A5",
+      "name": "Song 3",
+      "genre": ["jazz", "blues"], 
+      "duration": 124
+    },
+    {
+      "artist": "B3 renamed",
+      "name": "Song 1",
+      "genre": ["blues","rock"], 
+      "duration": 150
+    }
+  ]

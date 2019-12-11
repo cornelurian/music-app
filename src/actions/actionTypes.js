@@ -6,6 +6,7 @@ export const AJAX_CALL_ERROR = 'AJAX_CALL_ERROR';
 export const LOAD_SONGS_SUCCESS = 'LOAD_SONGS_SUCCESS';
 export const SELECT_GENRE = 'SELECT_GENRE';
 export const UPDATE_FILTERED_SONGS = 'UPDATE_FILTERED_SONGS';
+export const UPDATE_CARDS = 'UPDATE_CARDS';
 
 //Songs list page
 export const TOGGLE_SORT_ORDER = "TOGGLE_SORT_ORDER";

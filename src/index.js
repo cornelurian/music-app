@@ -6,10 +6,8 @@ import * as serviceWorker from "./serviceWorker";
 
 import { Provider } from "react-redux";
 import configureStore from "./store/store";
-import { loadSongs } from "./actions/landingPageActions";
 
 const store = configureStore();
-store.dispatch(loadSongs());
 
 ReactDOM.render(
   <Provider store={store}>
