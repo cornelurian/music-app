@@ -1,11 +1,5 @@
 import * as types from "./actionTypes";
-import { beginAjaxCall, ajaxCallError } from "./ajaxStatusActions";
 import { genres } from "../constants/genres";
-import songsApi from "../api/songsApi";
-
-export const loadSongsSuccess = songs => {
-  return { type: types.LOAD_SONGS_SUCCESS, songs };
-};
 
 export const selectGenre = genre => {
   return { type: types.SELECT_GENRE, payload: genre };
@@ -15,25 +9,14 @@ export const updateFilteredSongs = songs => {
   return { type: types.UPDATE_FILTERED_SONGS, songs };
 };
 
-export const updateCards = cards => {
-  return { type: types.UPDATE_CARDS, cards };
+export const loadCardsFromSongs = songs => {
+  //store the cards based on the song list
+  const cards = getUniqueCategories(songs);
+  return updateCards(cards);
 };
 
-export const loadSongs = () => dispatch => {
-  dispatch(beginAjaxCall());
-  return songsApi
-    .getAllSongs()
-    .then((songs = []) => {
-      //store the songs
-      dispatch(loadSongsSuccess(songs));
-
-      //store the cards based on the song list
-      const cards = getUniqueCategories(songs);
-      return dispatch(updateCards(cards));
-    })
-    .catch(error => {
-      throw error;
-    });
+export const updateCards = cards => {
+  return { type: types.UPDATE_CARDS, cards };
 };
 
 const getBackgroundImage = selected => {
@@ -42,7 +25,9 @@ const getBackgroundImage = selected => {
 };
 
 const getUniqueCategories = songs => {
-  const allGenresListFromSongs = [].concat(...songs.map(song => song.genre)); //concatenate all genres from all songs
+  const allGenresListFromSongs = []
+    .concat(...songs.map(song => song.genre))
+    .map(name => name.toLowerCase()); //concatenate all genres from all songs
 
   const uniqueGenres = [
     ...new Set(allGenresListFromSongs.map(genre => genre.toLowerCase()))

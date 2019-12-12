@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Card from "../card/card";
-import { loadSongs } from "../../../actions/landingPageActions";
+import { loadSongs } from "../../../actions/songsListActions";
 import "./genreList.css";
+import { loadCardsFromSongs } from "../../../actions/landingPageActions";
 
 class GenreList extends Component {
   constructor(props) {
@@ -11,7 +12,9 @@ class GenreList extends Component {
   }
 
   componentDidMount() {
-    this.props.load();
+    //this.props.loadSongs();
+    debugger
+    this.props.loadCards(this.props.songs);
   }
 
   render() {
@@ -36,7 +39,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  load: () => dispatch(loadSongs())
+  loadSongs: () => dispatch(loadSongs()),
+  loadCards: songs => dispatch(loadCardsFromSongs(songs))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenreList);

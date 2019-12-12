@@ -5,7 +5,7 @@ const songsPageReducer = (state = initialState.songs, action) => {
   switch (action.type) {
     case types.LOAD_SONGS_SUCCESS:
       return action.songs;
-    case types.ADD_NEW_SONG:
+    case types.ADD_NEW_SONG_SUCCESS:
       return [...state, action.newSong];
     default:
       return state;

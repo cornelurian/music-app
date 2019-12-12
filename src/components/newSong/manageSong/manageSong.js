@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
 import SongForm from "../songForm/songForm";
 import { saveSong } from "../../../actions/songsListActions";
 
@@ -58,8 +59,12 @@ class ManageSong extends React.Component {
       return;
     }
 
-    //set song's genre property with the list of selected checkboxes
-    this.props.submit(Object.assign({}, this.state.song, {genre: this.state.selectedGenres}));
+    //set song's genre property with the list of selected checkboxes (from map)
+    this.props.submit(
+      Object.assign({}, this.state.song, {
+        genre: [...this.state.selectedGenres.keys()]
+      })
+    );
   }
 
   updateSongState(event) {
@@ -74,9 +79,11 @@ class ManageSong extends React.Component {
   updateGenreSelection(event) {
     const item = event.target.name;
     const isChecked = event.target.checked;
-    
+
     //update the check property of the coresponding checkbox item from list
-    this.setState(prevState => ({ selectedGenres: prevState.selectedGenres.set(item, isChecked) }));
+    this.setState(prevState => ({
+      selectedGenres: prevState.selectedGenres.set(item, isChecked)
+    }));
   }
 
   render() {
@@ -94,11 +101,14 @@ class ManageSong extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {};
-
+const mapStateToProps = state => {
+  return {
+    count: state.songs.length
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
-    submit: song => dispatch(saveSong(song))
+    submit: song => dispatch(saveSong(song), push("/"))
   };
 };
 
