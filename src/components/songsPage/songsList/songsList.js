@@ -51,7 +51,9 @@ class SongsList extends Component {
 
   getSongsByGenre(genre) {
     if (this.props.allSongs && genre) {
-      return this.props.allSongs.filter(song => song.genre.includes(genre));
+      return this.props.allSongs.filter(song =>
+        song.genre.map(name => name.toLowerCase()).includes(genre.toLowerCase())
+      );
     }
     return [];
   }
