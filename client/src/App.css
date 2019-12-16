@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  border:1px solid gray;
 }
 
 .App-logo {
@@ -19,4 +20,8 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.alert-danger {
+  color: red;
 }

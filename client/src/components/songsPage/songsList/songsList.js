@@ -17,6 +17,7 @@ import {
   selectGenre,
   updateFilteredSongs
 } from "../../../actions/landingPageActions";
+import SortButton from "../sortButton/sortButton";
 
 class SongsList extends Component {
   constructor(props) {
@@ -72,70 +73,75 @@ class SongsList extends Component {
     );
 
     return (
-      <div style={{ border: "1px solid gray", width: "600px" }}>
+      <div className="content">
         <h2>{this.props.selectedGenre} songs</h2>
         <br />
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            width: "320px"
-          }}
-        >
-          <Link to={`/`}>Back</Link>
-          <input
-            value={this.input}
-            type="text"
-            placeholder="search by Artist or Song"
-            onChange={this.onChangeHandler.bind(this)}
-          />
-
-          <input
-            type="button"
-            name="sort"
-            style={{
-              backgroundImage: `${this.sortIconPath}`,
-              backgroundSize: "cover"
-            }}
-            onClick={this.props.toggleSortList}
-          />
-          <Link to={`/new`}>
-            <input
-              type="button"
-              name="add"
-              style={{
-                backgroundImage: `${this.sortAddPath}`,
-                backgroundSize: "cover"
-              }}
-            />
+        <div id="listHeader">
+          <Link className="backButton" to={`/`}>
+            {`<Back`}
           </Link>
+
+          <div className="searchAndButtons">
+            <input
+              value={this.input}
+              type="text"
+              placeholder="search by Artist or Song"
+              onChange={this.onChangeHandler.bind(this)}
+            />
+            <Link to={`/new`}>
+              <input
+                type="button"
+                name="add"
+                style={{
+                  height: "17px",
+                  marginLeft: "20px",
+                  backgroundImage: `${this.sortAddPath}`,
+                  backgroundSize: "cover"
+                }}
+              />
+            </Link>
+          </div>
         </div>
         <br />
         <div className="grid">
-          <span
+          <div
             className={`header ${this.highlightSelectedHeader("name")}`}
             onClick={event => {
               this.props.changeSortBy("name");
             }}
           >
-            Name
-          </span>
-          <span
+            <p>Name</p>
+            {this.props.filters.sortBy === "name" && (
+              <SortButton
+                image={this.sortIconPath}
+                onClick={this.props.toggleSortList}
+              ></SortButton>
+            )}
+          </div>
+          <div
             className={`header  ${this.highlightSelectedHeader("artist")}`}
             onClick={event => {
               this.props.changeSortBy("artist");
             }}
           >
-            Artist
-          </span>
-          <span className="header">Duration</span>
+            <p>Artist</p>
+            {this.props.filters.sortBy === "artist" && (
+              <SortButton
+                image={this.sortIconPath}
+                onClick={this.props.toggleSortList}
+              ></SortButton>
+            )}
+          </div>
+          <div className="header">
+            <p>Duration</p>
+          </div>
           <Grid songs={list}></Grid>
         </div>
         <br />
-        {/* <p>Filters: {JSON.stringify(this.props.filters, null, 2)}</p> */}
-        <p>SortBy: {this.props.filters.sortBy}</p>
-        <p>SortDirection: {this.props.filters.sortDirection}</p>
+        <div className="footer">
+          <p>SortBy: {this.props.filters.sortBy}</p>
+          <p>SortDirection: {this.props.filters.sortDirection}</p>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import SongForm from "../songForm/songForm";
@@ -43,7 +43,7 @@ class ManageSong extends React.Component {
       errors.duration = "Duration is required";
       formIsValid = false;
     }
-    if (this.state.song.genre === []) {
+    if (this.state.selectedGenres.size === 0) {
       errors.genre = "At least one genre is required";
       formIsValid = false;
     }

@@ -12,6 +12,7 @@ class GenresContainer extends React.Component {
   render() {
     return (
       <div className="genres">
+        <p>Please select at least one genre</p>
         {list.map(item => (
           <label key={item.key} className="item">
             {item.name}

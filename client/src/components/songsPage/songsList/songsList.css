@@ -1,20 +1,54 @@
+.content {
+  width: 80vw;
+}
+
+#listHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#listHeader .backButton {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#listHeader .searchAndButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.grid > span {
-    padding: 4px 4px;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+.grid > div {
+  padding: 4px 4px;
 }
 
-.grid > span.header {
-    font-size: 35px;
+.grid > div.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-size: 20px;
+  height: 50px;
+  border-bottom: 1px solid gray;
+}
+
+.grid > div.header * {
+    padding:4px;
 }
 
 .selected {
-    color: gray;
+  color: gray;
+}
+
+.footer {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
 }

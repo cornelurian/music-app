@@ -1,18 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
-import { Route, Switch } from 'react-router' // react-router v4/v5
+import { Route } from 'react-router' // react-router v4/v5
 
 import GenreList from "./components/landingPage/genreList/genreList";
 import SongsList from "./components/songsPage/songsList/songsList";
 import ManageSong from "./components/newSong/manageSong/manageSong";
+import LoadingDots from "./components/common/loadingDots";
 
 export class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <Header loading={this.props.loading}/> */}
+        <LoadingDots visible={this.props.loading}/>
         <header className="App-header">
             <div>
               <Route exact path="/" component={GenreList} />

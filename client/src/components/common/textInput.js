@@ -1,10 +1,7 @@
 import React from "react";
 
 const TextInput = ({ name, label, value, onChange, error }) => {
-  let wrapperClass = "form-group";
-  if (error && error.length > 0) {
-    wrapperClass += " " + "has-error";
-  }
+  let wrapperClass = `form-group ${error && error.length > 0 ? 'has-error': ''}`;
 
   return (
     <div className={wrapperClass}>
